@@ -41,10 +41,13 @@ namespace SteamRegistryCreator
 
             dFolder.ShowDialog();
             Gpath = dFolder.SelectedPath;
-            lFolderName.Text = Gpath;
+            if (Gpath != null && Gpath != "")
+            {
+                lFolderName.Text = Gpath;
 
-            Thread w = new Thread(new ThreadStart(refreshGameList));
-            w.Start();
+                Thread w = new Thread(new ThreadStart(refreshGameList));
+                w.Start();
+            }
         }
 
         private void addGame(Int32 id, String name, String path)
